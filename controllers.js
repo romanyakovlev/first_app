@@ -25,12 +25,21 @@ controllers.news = function() {
 	}
 
 	this.deleteNews = function(req, res) {
-		console.log('ok');
 		var news_id = req.body.news_id;
 		var news = models.news;
 
 		news.deleteNews({news_id: news_id}, function(err) {
 			res.end(JSON.stringify({status: "success"}));
+		});
+	}
+
+	this.updateNews = function(req, res) {
+		var subject = req.body.subject;
+		var text = req.body.text;
+		var news_id = req.body.news_id;
+		var news = models.news;
+		news.updateNews({subject: subject, text: text , news_id: news_id}, function(err) {
+			res.end(JSON.stringify({status: "success", news_id: news_id, subject: subject, text}));
 		});
 	}
 

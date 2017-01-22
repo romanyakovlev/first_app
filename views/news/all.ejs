@@ -2,7 +2,7 @@
 <% for(var i = 0; i < news.length; i++) { %>
 <div id="<%= news[i]['id']%>" style="border:2px solid black;">
     <a class="deletenews" href="#">Удалить</a>
-    <a class="editnews" href="#">Редактировать</a>
+    <a class="updatenews" href="#">Редактировать</a>
     <h4><%= news[i]['subject']%></h4>
     <p><%= news[i]['text']%></p>
 </div>

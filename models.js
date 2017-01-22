@@ -84,6 +84,17 @@ var news = function() {
 			}
 		});
 	}
+
+	this.updateNews = function(news, callback) {
+		query("UPDATE news SET subject = :subject, text = :text WHERE id = :news_id", {subject: news.subject, text: news.text, news_id: news.news_id}, function(err) {
+			if(!err) {
+				callback(null);
+			} else {
+				callback(err);
+			}
+		});
+	}
+
 };
 
 

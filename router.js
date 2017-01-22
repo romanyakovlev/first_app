@@ -9,9 +9,9 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
 
-console.log(controllers.news);
 router.get('/', news.getAllNews);
 router.post('/addNews', news.addNews);
 router.post('/deleteNews', news.deleteNews);
+router.post('/updateNews', news.updateNews);
 
 module.exports = router;
