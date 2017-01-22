@@ -14,6 +14,16 @@ function addnews() {
 
 }
 
+$("a.deletenews").click(function(){
+	var result = new Object();
+    result['news_id'] = $(this).parent().attr('id');
+
+	sendJSON('/deleteNews', result, function(err, data) {
+		if(!err && data.status == "success") {
+			window.location.href = "/";
+		}
+	});
+});
 
 function sendJSON(url, obj, callback) {
 	$.ajax({

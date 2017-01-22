@@ -13,15 +13,15 @@ function query(query, parameters, callback) {
 			console.log(err);
 			if (typeof(callback) === "function") callback(err);
 		} else {
-			connection.config.queryFormat = function (query, values) { 
-				if (!values) return query; 
-					return query.replace(/\:(\w+)/g, function (txt, key) { 
-						if (values.hasOwnProperty(key)) { 
-							return this.escape(values[key]); 
-						} 
-					return txt; 
-				}.bind(this)); 
-			};			
+			connection.config.queryFormat = function (query, values) {
+				if (!values) return query;
+					return query.replace(/\:(\w+)/g, function (txt, key) {
+						if (values.hasOwnProperty(key)) {
+							return this.escape(values[key]);
+						}
+					return txt;
+				}.bind(this));
+			};
 			connection.query(query, parameters, function(err, rows) {
 				connection.release();
 				if (err) {
@@ -74,11 +74,19 @@ var news = function() {
 			}
 		});
 	}
+
+	this.deleteNews = function(news, callback) {
+		query("DELETE FROM news WHERE id = :news_id", {news_id: news.news_id}, function(err) {
+			if(!err) {
+				callback(null);
+			} else {
+				callback(err);
+			}
+		});
+	}
 };
 
 
 module.exports = {
 	news: new news()
 };
-
-

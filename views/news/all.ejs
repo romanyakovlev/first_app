@@ -1,16 +1,20 @@
 <%- include('../header', {title: title}); %>
-<script src="/js/news.js"></script>
 <% for(var i = 0; i < news.length; i++) { %>
-<h4><%= news[i]['subject']%></h4>
-<p><%= news[i]['text']%></p>
+<div id="<%= news[i]['id']%>" style="border:2px solid black;">
+    <a class="deletenews" href="#">Удалить</a>
+    <a class="editnews" href="#">Редактировать</a>
+    <h4><%= news[i]['subject']%></h4>
+    <p><%= news[i]['text']%></p>
+</div>
 <% }%>
-<br> 
+<br>
+
 <h2>Добавить новость</h2>
 <form id="addnews">
 <input type="text" name="subject" placeholder="Заголовок"><br>
 <textarea placeholder="Текст Новости" name="text"></textarea><br>
-<button type="button" onclick="addnews()">Добавить</button> 
+<button type="button" onclick="addnews()">Добавить</button>
 </form>
 
-
+<script src="/js/news.js"></script>
 <%- include('../footer'); %>

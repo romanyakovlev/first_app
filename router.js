@@ -12,6 +12,6 @@ router.use(bodyParser.json());
 console.log(controllers.news);
 router.get('/', news.getAllNews);
 router.post('/addNews', news.addNews);
+router.post('/deleteNews', news.deleteNews);
 
 module.exports = router;
-
